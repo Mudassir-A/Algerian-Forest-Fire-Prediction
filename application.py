@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
-app = Flask(__name__)
-
+application = Flask(__name__)
+app = application
 # import ridge regressor model and standard scaler pickle
 ridge_model = pickle.load(open("models/ridge.pkl", "rb"))
 standard_scaler = pickle.load(open("models/scaler.pkl", "rb"))
@@ -35,7 +35,7 @@ def predict_datapoint():
         )
         result = ridge_model.predict(new_data_scaled)[0]
 
-        return render_template('home.html', result=result)
+        return render_template("home.html", result=result)
     else:
         return render_template("home.html")
 
